@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.20;
+pragma solidity 0.8.24;
 
 import {IUniswapV2Router01} from "../../vendor/IUniswapV2Router01.sol";
 import {IUniswapV2Factory} from "../../vendor/IUniswapV2Factory.sol";
@@ -51,6 +51,7 @@ contract UniswapAdapter is AStaticUSDCData {
         if (!succ) {
             revert UniswapAdapter__TransferFailed();
         }
+        // @audit-high doesn't have slippage protection, this could be exploited with sandwich attacks
         uint256[] memory amounts = i_uniswapRouter.swapExactTokensForTokens({
             amountIn: amountOfTokenToSwap,
             amountOutMin: 0,
@@ -69,6 +70,8 @@ contract UniswapAdapter is AStaticUSDCData {
         }
 
         // amounts[1] should be the WETH amount we got back
+        // @audit-follow-up why involve address(this) as the to address?
+        // @audit-high amountAMin and amountBMin are 0, this is not good
         (uint256 tokenAmount, uint256 counterPartyTokenAmount, uint256 liquidity) = i_uniswapRouter.addLiquidity({
             tokenA: address(token),
             tokenB: address(counterPartyToken),
@@ -88,9 +91,10 @@ contract UniswapAdapter is AStaticUSDCData {
      * @param token The vault's underlying asset token
      * @param liquidityAmount The amount of LP tokens to burn
      */
+     // @audit-follow-up why involve address(this) as the to address?
     function _uniswapDivest(IERC20 token, uint256 liquidityAmount) internal returns (uint256 amountOfAssetReturned) {
         IERC20 counterPartyToken = token == i_weth ? i_tokenOne : i_weth;
-
+        // @audit-high doesn't have slippage protection
         (uint256 tokenAmount, uint256 counterPartyTokenAmount) = i_uniswapRouter.removeLiquidity({
             tokenA: address(token),
             tokenB: address(counterPartyToken),
@@ -101,6 +105,7 @@ contract UniswapAdapter is AStaticUSDCData {
             deadline: block.timestamp
         });
         s_pathArray = [address(counterPartyToken), address(token)];
+        // @audit-high doesn't have slippage protection
         uint256[] memory amounts = i_uniswapRouter.swapExactTokensForTokens({
             amountIn: counterPartyTokenAmount,
             amountOutMin: 0,

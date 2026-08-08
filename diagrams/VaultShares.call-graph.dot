@@ -1,0 +1,261 @@
+strict digraph {
+rankdir="LR"
+node [shape=box]
+subgraph cluster_19680_VaultShares {
+label = "VaultShares"
+"19680_setNotActive" [label="setNotActive"]
+"19680_slitherConstructorConstantVariables" [label="slitherConstructorConstantVariables"]
+"19680_getIsActive" [label="getIsActive"]
+"19680_withdraw" [label="withdraw"]
+"19680_rebalanceFunds" [label="rebalanceFunds"]
+"19680_redeem" [label="redeem"]
+"19680_getAllocationData" [label="getAllocationData"]
+"19680_getUniswapLiquidtyToken" [label="getUniswapLiquidtyToken"]
+"19680_deposit" [label="deposit"]
+"19680_getGuardianAndDaoCut" [label="getGuardianAndDaoCut"]
+"19680_getGuardian" [label="getGuardian"]
+"19680_getAaveAToken" [label="getAaveAToken"]
+"19680__investFunds" [label="_investFunds"]
+"19680_getVaultGuardians" [label="getVaultGuardians"]
+"19680_updateHoldingAllocation" [label="updateHoldingAllocation"]
+"19680_constructor" [label="constructor"]
+"19680_withdraw" -> "19680_nonReentrant"
+"19680_rebalanceFunds" -> "19680_nonReentrant"
+"19680_setNotActive" -> "19680_isActive"
+"19680_deposit" -> "19680__investFunds"
+"19680_deposit" -> "19680__msgSender"
+"19680_redeem" -> "19680_divestThenInvest"
+"19680_redeem" -> "19680_nonReentrant"
+"19680_updateHoldingAllocation" -> "19680_onlyVaultGuardians"
+"19680__investFunds" -> "19680__uniswapInvest"
+"19680_constructor" -> "19680_constructor"
+"19680_deposit" -> "19680_isActive"
+"19680_redeem" -> "19680_redeem"
+"19680_deposit" -> "19680_nonReentrant"
+"19680_rebalanceFunds" -> "19680_isActive"
+"19680_withdraw" -> "19680_withdraw"
+"19680_updateHoldingAllocation" -> "19680_isActive"
+"19680_setNotActive" -> "19680_onlyVaultGuardians"
+"19680_rebalanceFunds" -> "19680_divestThenInvest"
+"19680_deposit" -> "19680_maxDeposit"
+"19680__investFunds" -> "19680_asset"
+"19680_deposit" -> "19680__mint"
+"19680_deposit" -> "19680_previewDeposit"
+"19680_deposit" -> "19680__deposit"
+"19680_constructor" -> "19680_updateHoldingAllocation"
+"19680__investFunds" -> "19680__aaveInvest"
+"19680_withdraw" -> "19680_divestThenInvest"
+}subgraph cluster_20098_UniswapAdapter {
+label = "UniswapAdapter"
+"20098__uniswapDivest" [label="_uniswapDivest"]
+"20098_constructor" [label="constructor"]
+"20098__uniswapInvest" [label="_uniswapInvest"]
+"20098_constructor" -> "20098_constructor"
+}subgraph cluster_19779_AaveAdapter {
+label = "AaveAdapter"
+"19779__aaveInvest" [label="_aaveInvest"]
+"19779_constructor" [label="constructor"]
+"19779__aaveDivest" [label="_aaveDivest"]
+}subgraph cluster_8292_ReentrancyGuard {
+label = "ReentrancyGuard"
+"8292_constructor" [label="constructor"]
+"8292__nonReentrantAfter" [label="_nonReentrantAfter"]
+"8292__nonReentrantBeforeView" [label="_nonReentrantBeforeView"]
+"8292__reentrancyGuardEntered" [label="_reentrancyGuardEntered"]
+"8292__nonReentrantBefore" [label="_nonReentrantBefore"]
+"8292__reentrancyGuardStorageSlot" [label="_reentrancyGuardStorageSlot"]
+"8292__reentrancyGuardEntered" -> "8292__reentrancyGuardStorageSlot"
+"8292__nonReentrantBefore" -> "8292__nonReentrantBeforeView"
+"8292__nonReentrantAfter" -> "8292__reentrancyGuardStorageSlot"
+"8292__nonReentrantBeforeView" -> "8292__reentrancyGuardEntered"
+"8292_constructor" -> "8292__reentrancyGuardStorageSlot"
+"8292__nonReentrantBefore" -> "8292__reentrancyGuardStorageSlot"
+}subgraph cluster_4675_ERC20 {
+label = "ERC20"
+"4675__transfer" [label="_transfer"]
+"4675__mint" [label="_mint"]
+"4675__burn" [label="_burn"]
+"4675_approve" [label="approve"]
+"4675_constructor" [label="constructor"]
+"4675_allowance" [label="allowance"]
+"4675__spendAllowance" [label="_spendAllowance"]
+"4675_transfer" [label="transfer"]
+"4675_symbol" [label="symbol"]
+"4675_balanceOf" [label="balanceOf"]
+"4675_decimals" [label="decimals"]
+"4675_totalSupply" [label="totalSupply"]
+"4675__update" [label="_update"]
+"4675_transferFrom" [label="transferFrom"]
+"4675_name" [label="name"]
+"4675__approve" [label="_approve"]
+"4675__mint" -> "4675__update"
+"4675__approve" -> "4675__approve"
+"4675_transferFrom" -> "4675__transfer"
+"4675_transfer" -> "4675__transfer"
+"4675_transfer" -> "4675__msgSender"
+"4675_transferFrom" -> "4675__msgSender"
+"4675__spendAllowance" -> "4675_allowance"
+"4675_approve" -> "4675__approve"
+"4675__transfer" -> "4675__update"
+"4675_approve" -> "4675__msgSender"
+"4675__spendAllowance" -> "4675__approve"
+"4675__burn" -> "4675__update"
+"4675_transferFrom" -> "4675__spendAllowance"
+}subgraph cluster_5799_IERC20Metadata {
+label = "IERC20Metadata"
+"5799_symbol" [label="symbol"]
+"5799_name" [label="name"]
+"5799_decimals" [label="decimals"]
+}subgraph cluster_7529_Context {
+label = "Context"
+"7529__contextSuffixLength" [label="_contextSuffixLength"]
+"7529__msgSender" [label="_msgSender"]
+"7529__msgData" [label="_msgData"]
+}subgraph cluster_3914_IERC4626 {
+label = "IERC4626"
+"3914_redeem" [label="redeem"]
+"3914_previewRedeem" [label="previewRedeem"]
+"3914_maxRedeem" [label="maxRedeem"]
+"3914_previewMint" [label="previewMint"]
+"3914_convertToShares" [label="convertToShares"]
+"3914_asset" [label="asset"]
+"3914_maxDeposit" [label="maxDeposit"]
+"3914_maxMint" [label="maxMint"]
+"3914_mint" [label="mint"]
+"3914_totalAssets" [label="totalAssets"]
+"3914_withdraw" [label="withdraw"]
+"3914_deposit" [label="deposit"]
+"3914_maxWithdraw" [label="maxWithdraw"]
+"3914_previewWithdraw" [label="previewWithdraw"]
+"3914_previewDeposit" [label="previewDeposit"]
+"3914_convertToAssets" [label="convertToAssets"]
+}subgraph cluster_5773_ERC4626 {
+label = "ERC4626"
+"5773_previewDeposit" [label="previewDeposit"]
+"5773__convertToShares" [label="_convertToShares"]
+"5773__decimalsOffset" [label="_decimalsOffset"]
+"5773__convertToAssets" [label="_convertToAssets"]
+"5773_deposit" [label="deposit"]
+"5773_decimals" [label="decimals"]
+"5773__withdraw" [label="_withdraw"]
+"5773__tryGetAssetDecimals" [label="_tryGetAssetDecimals"]
+"5773_constructor" [label="constructor"]
+"5773__deposit" [label="_deposit"]
+"5773_asset" [label="asset"]
+"5773_mint" [label="mint"]
+"5773__transferOut" [label="_transferOut"]
+"5773_convertToShares" [label="convertToShares"]
+"5773_convertToAssets" [label="convertToAssets"]
+"5773_previewMint" [label="previewMint"]
+"5773_maxMint" [label="maxMint"]
+"5773_maxDeposit" [label="maxDeposit"]
+"5773__transferIn" [label="_transferIn"]
+"5773_withdraw" [label="withdraw"]
+"5773_previewWithdraw" [label="previewWithdraw"]
+"5773_redeem" [label="redeem"]
+"5773_maxWithdraw" [label="maxWithdraw"]
+"5773_maxRedeem" [label="maxRedeem"]
+"5773_totalAssets" [label="totalAssets"]
+"5773_previewRedeem" [label="previewRedeem"]
+"5773_constructor" -> "5773__tryGetAssetDecimals"
+"5773_deposit" -> "5773_maxDeposit"
+"5773_redeem" -> "5773_previewRedeem"
+"5773_mint" -> "5773__deposit"
+"5773_redeem" -> "5773__withdraw"
+"5773_previewRedeem" -> "5773__convertToAssets"
+"5773_deposit" -> "5773_previewDeposit"
+"5773__convertToAssets" -> "5773_totalSupply"
+"5773__withdraw" -> "5773__spendAllowance"
+"5773__convertToShares" -> "5773_totalSupply"
+"5773_previewWithdraw" -> "5773__convertToShares"
+"5773_convertToAssets" -> "5773__convertToAssets"
+"5773_mint" -> "5773_maxMint"
+"5773_redeem" -> "5773__msgSender"
+"5773_previewMint" -> "5773__convertToAssets"
+"5773_maxWithdraw" -> "5773_previewRedeem"
+"5773_totalAssets" -> "5773_asset"
+"5773__withdraw" -> "5773__transferOut"
+"5773_withdraw" -> "5773_maxWithdraw"
+"5773__transferOut" -> "5773_asset"
+"5773_previewDeposit" -> "5773__convertToShares"
+"5773_maxRedeem" -> "5773_balanceOf"
+"5773__transferIn" -> "5773_asset"
+"5773_deposit" -> "5773__msgSender"
+"5773_redeem" -> "5773_maxRedeem"
+"5773__deposit" -> "5773__mint"
+"5773_decimals" -> "5773__decimalsOffset"
+"5773__convertToShares" -> "5773_totalAssets"
+"5773_withdraw" -> "5773__msgSender"
+"5773__convertToShares" -> "5773__decimalsOffset"
+"5773_withdraw" -> "5773_previewWithdraw"
+"5773__convertToAssets" -> "5773_totalAssets"
+"5773__convertToAssets" -> "5773__decimalsOffset"
+"5773_mint" -> "5773__msgSender"
+"5773_convertToShares" -> "5773__convertToShares"
+"5773_mint" -> "5773_previewMint"
+"5773_withdraw" -> "5773__withdraw"
+"5773_maxWithdraw" -> "5773_maxRedeem"
+"5773__withdraw" -> "5773__burn"
+"5773__deposit" -> "5773__transferIn"
+"5773_deposit" -> "5773__deposit"
+}subgraph cluster_4753_IERC20 {
+label = "IERC20"
+"4753_balanceOf" [label="balanceOf"]
+"4753_allowance" [label="allowance"]
+"4753_transferFrom" [label="transferFrom"]
+"4753_approve" [label="approve"]
+"4753_transfer" [label="transfer"]
+"4753_totalSupply" [label="totalSupply"]
+}subgraph cluster_18261_IVaultShares {
+label = "IVaultShares"
+"18261_setNotActive" [label="setNotActive"]
+"18261_updateHoldingAllocation" [label="updateHoldingAllocation"]
+}subgraph cluster_18007_AStaticUSDCData {
+label = "AStaticUSDCData"
+"18007_constructor" [label="constructor"]
+"18007_getTokenOne" [label="getTokenOne"]
+"18007_constructor" -> "18007_constructor"
+}subgraph cluster_18043_AStaticWethData {
+label = "AStaticWethData"
+"18043_constructor" [label="constructor"]
+"18043_getWeth" [label="getWeth"]
+}subgraph cluster_solidity {
+label = "[Solidity]"
+"revert ERC4626ExceededMaxDeposit(address,uint256,uint256)" 
+"revert ERC20InsufficientAllowance(address,uint256,uint256)" 
+"revert ERC20InvalidReceiver(address)" 
+"abi.encodeCall()" 
+"revert ERC20InvalidSender(address)" 
+"revert ERC20InvalidSpender(address)" 
+"revert VaultShares__DepositMoreThanMax(uint256,uint256)" 
+"revert ERC4626ExceededMaxRedeem(address,uint256,uint256)" 
+"revert UniswapAdapter__TransferFailed()" 
+"revert ERC20InsufficientBalance(address,uint256,uint256)" 
+"revert ERC4626ExceededMaxWithdraw(address,uint256,uint256)" 
+"revert ERC4626ExceededMaxMint(address,uint256,uint256)" 
+"revert ERC20InvalidApprover(address)" 
+"revert ReentrancyGuardReentrantCall()" 
+"revert VaultShares__AllocationNot100Percent(uint256)" 
+"revert AaveAdapter__TransferFailed()" 
+"19680_updateHoldingAllocation" -> "revert VaultShares__AllocationNot100Percent(uint256)"
+"8292__nonReentrantBeforeView" -> "revert ReentrancyGuardReentrantCall()"
+"5773_deposit" -> "revert ERC4626ExceededMaxDeposit(address,uint256,uint256)"
+"19779__aaveInvest" -> "revert AaveAdapter__TransferFailed()"
+"5773__tryGetAssetDecimals" -> "abi.encodeCall()"
+"4675__transfer" -> "revert ERC20InvalidReceiver(address)"
+"4675__mint" -> "revert ERC20InvalidReceiver(address)"
+"4675__approve" -> "revert ERC20InvalidApprover(address)"
+"5773_withdraw" -> "revert ERC4626ExceededMaxWithdraw(address,uint256,uint256)"
+"5773_redeem" -> "revert ERC4626ExceededMaxRedeem(address,uint256,uint256)"
+"4675__spendAllowance" -> "revert ERC20InsufficientAllowance(address,uint256,uint256)"
+"5773_mint" -> "revert ERC4626ExceededMaxMint(address,uint256,uint256)"
+"19680_deposit" -> "revert VaultShares__DepositMoreThanMax(uint256,uint256)"
+"4675__update" -> "revert ERC20InsufficientBalance(address,uint256,uint256)"
+"4675__approve" -> "revert ERC20InvalidSpender(address)"
+"4675__burn" -> "revert ERC20InvalidSender(address)"
+"4675__transfer" -> "revert ERC20InvalidSender(address)"
+"20098__uniswapInvest" -> "revert UniswapAdapter__TransferFailed()"
+}"19779__aaveInvest" -> "4753_approve"
+"20098__uniswapInvest" -> "4753_approve"
+"5773_totalAssets" -> "4753_balanceOf"
+}

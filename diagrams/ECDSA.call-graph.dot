@@ -1,0 +1,41 @@
+strict digraph {
+rankdir="LR"
+node [shape=box]
+subgraph cluster_10602_ECDSA {
+label = "ECDSA"
+"10602_recoverCalldata" [label="recoverCalldata"]
+"10602_parseCalldata" [label="parseCalldata"]
+"10602_recover" [label="recover"]
+"10602_tryRecover" [label="tryRecover"]
+"10602_tryRecoverCalldata" [label="tryRecoverCalldata"]
+"10602__throwError" [label="_throwError"]
+"10602_parse" [label="parse"]
+"10602_recover" -> "10602_tryRecover"
+"10602_recoverCalldata" -> "10602_tryRecoverCalldata"
+"10602_tryRecoverCalldata" -> "10602_tryRecover"
+"10602_recover" -> "10602__throwError"
+"10602_tryRecover" -> "10602_tryRecover"
+"10602_recoverCalldata" -> "10602__throwError"
+}subgraph cluster_solidity {
+label = "[Solidity]"
+"mload(uint256)" 
+"revert ECDSAInvalidSignature()" 
+"revert ECDSAInvalidSignatureS(bytes32)" 
+"ecrecover(bytes32,uint8,bytes32,bytes32)" 
+"byte(uint256,uint256)" 
+"revert ECDSAInvalidSignatureLength(uint256)" 
+"calldataload(uint256)" 
+"10602__throwError" -> "revert ECDSAInvalidSignatureLength(uint256)"
+"10602_tryRecoverCalldata" -> "calldataload(uint256)"
+"10602_parseCalldata" -> "calldataload(uint256)"
+"10602__throwError" -> "revert ECDSAInvalidSignature()"
+"10602__throwError" -> "revert ECDSAInvalidSignatureS(bytes32)"
+"10602_tryRecover" -> "ecrecover(bytes32,uint8,bytes32,bytes32)"
+"10602_tryRecover" -> "byte(uint256,uint256)"
+"10602_tryRecover" -> "mload(uint256)"
+"10602_tryRecoverCalldata" -> "byte(uint256,uint256)"
+"10602_parse" -> "byte(uint256,uint256)"
+"10602_parse" -> "mload(uint256)"
+"10602_parseCalldata" -> "byte(uint256,uint256)"
+}
+}

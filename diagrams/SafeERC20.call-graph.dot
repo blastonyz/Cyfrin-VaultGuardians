@@ -1,0 +1,73 @@
+strict digraph {
+rankdir="LR"
+node [shape=box]
+subgraph cluster_6290_SafeERC20 {
+label = "SafeERC20"
+"6290_trySafeTransferFrom" [label="trySafeTransferFrom"]
+"6290_forceApprove" [label="forceApprove"]
+"6290_safeDecreaseAllowance" [label="safeDecreaseAllowance"]
+"6290_safeIncreaseAllowance" [label="safeIncreaseAllowance"]
+"6290_safeTransferFrom" [label="safeTransferFrom"]
+"6290_safeTransfer" [label="safeTransfer"]
+"6290_transferAndCallRelaxed" [label="transferAndCallRelaxed"]
+"6290__safeTransferFrom" [label="_safeTransferFrom"]
+"6290_trySafeTransfer" [label="trySafeTransfer"]
+"6290_transferFromAndCallRelaxed" [label="transferFromAndCallRelaxed"]
+"6290_approveAndCallRelaxed" [label="approveAndCallRelaxed"]
+"6290__safeTransfer" [label="_safeTransfer"]
+"6290__safeApprove" [label="_safeApprove"]
+"6290_trySafeTransferFrom" -> "6290__safeTransferFrom"
+"6290_forceApprove" -> "6290__safeApprove"
+"6290_transferFromAndCallRelaxed" -> "6290_safeTransferFrom"
+"6290_safeTransfer" -> "6290__safeTransfer"
+"6290_safeDecreaseAllowance" -> "6290_forceApprove"
+"6290_approveAndCallRelaxed" -> "6290_forceApprove"
+"6290_transferAndCallRelaxed" -> "6290_safeTransfer"
+"6290_trySafeTransfer" -> "6290__safeTransfer"
+"6290_safeTransferFrom" -> "6290__safeTransferFrom"
+"6290_safeIncreaseAllowance" -> "6290_forceApprove"
+}subgraph cluster_solidity {
+label = "[Solidity]"
+"revert SafeERC20FailedOperation(address)" 
+"gas()" 
+"mload(uint256)" 
+"returndatacopy(uint256,uint256,uint256)" 
+"revert(uint256,uint256)" 
+"code(address)" 
+"call(uint256,uint256,uint256,uint256,uint256,uint256,uint256)" 
+"returndatasize()" 
+"mstore(uint256,uint256)" 
+"revert SafeERC20FailedDecreaseAllowance(address,uint256,uint256)" 
+"6290__safeTransferFrom" -> "revert(uint256,uint256)"
+"6290__safeTransfer" -> "returndatacopy(uint256,uint256,uint256)"
+"6290__safeApprove" -> "mstore(uint256,uint256)"
+"6290_transferFromAndCallRelaxed" -> "revert SafeERC20FailedOperation(address)"
+"6290_approveAndCallRelaxed" -> "code(address)"
+"6290__safeTransferFrom" -> "mstore(uint256,uint256)"
+"6290__safeApprove" -> "gas()"
+"6290__safeApprove" -> "returndatacopy(uint256,uint256,uint256)"
+"6290__safeApprove" -> "mload(uint256)"
+"6290_transferFromAndCallRelaxed" -> "code(address)"
+"6290__safeApprove" -> "call(uint256,uint256,uint256,uint256,uint256,uint256,uint256)"
+"6290_forceApprove" -> "revert SafeERC20FailedOperation(address)"
+"6290_approveAndCallRelaxed" -> "revert SafeERC20FailedOperation(address)"
+"6290_safeTransfer" -> "revert SafeERC20FailedOperation(address)"
+"6290__safeTransferFrom" -> "gas()"
+"6290__safeApprove" -> "returndatasize()"
+"6290__safeTransferFrom" -> "returndatacopy(uint256,uint256,uint256)"
+"6290__safeTransfer" -> "returndatasize()"
+"6290__safeTransfer" -> "mstore(uint256,uint256)"
+"6290_safeDecreaseAllowance" -> "revert SafeERC20FailedDecreaseAllowance(address,uint256,uint256)"
+"6290__safeTransfer" -> "revert(uint256,uint256)"
+"6290__safeTransferFrom" -> "call(uint256,uint256,uint256,uint256,uint256,uint256,uint256)"
+"6290__safeApprove" -> "revert(uint256,uint256)"
+"6290__safeTransferFrom" -> "mload(uint256)"
+"6290__safeTransfer" -> "mload(uint256)"
+"6290__safeTransfer" -> "gas()"
+"6290_safeTransferFrom" -> "revert SafeERC20FailedOperation(address)"
+"6290_transferAndCallRelaxed" -> "code(address)"
+"6290__safeTransferFrom" -> "returndatasize()"
+"6290_transferAndCallRelaxed" -> "revert SafeERC20FailedOperation(address)"
+"6290__safeTransfer" -> "call(uint256,uint256,uint256,uint256,uint256,uint256,uint256)"
+}
+}

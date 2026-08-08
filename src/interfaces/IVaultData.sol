@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.20;
+pragma solidity 0.8.24;
 
 interface IVaultData {
     /**
@@ -8,6 +8,9 @@ interface IVaultData {
      * @notice uniswapAllocation is the ratio of tokens to add as liquidity in Uniswap v2
      * @notice aaveAllocation is the ratio of tokens to provide as lending amount in Aave v3
      */
+
+     // q which is the source of the ratio?
+     // q is a aave contract used like oracle to get the price of the token?
     struct AllocationData {
         uint256 holdAllocation; // hodl
         uint256 uniswapAllocation; // Simmilar to T-Swap

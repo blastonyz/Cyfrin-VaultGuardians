@@ -1,0 +1,77 @@
+strict digraph {
+rankdir="LR"
+node [shape=box]
+subgraph cluster_10143_Strings {
+label = "Strings"
+"10143__tryParseChr" [label="_tryParseChr"]
+"10143_parseUint" [label="parseUint"]
+"10143__tryParseHexUintUncheckedBounds" [label="_tryParseHexUintUncheckedBounds"]
+"10143_tryParseAddress" [label="tryParseAddress"]
+"10143__tryParseUintUncheckedBounds" [label="_tryParseUintUncheckedBounds"]
+"10143_parseAddress" [label="parseAddress"]
+"10143_tryParseHexUint" [label="tryParseHexUint"]
+"10143_equal" [label="equal"]
+"10143_toStringSigned" [label="toStringSigned"]
+"10143_tryParseInt" [label="tryParseInt"]
+"10143__tryParseIntUncheckedBounds" [label="_tryParseIntUncheckedBounds"]
+"10143_toHexString" [label="toHexString"]
+"10143_tryParseUint" [label="tryParseUint"]
+"10143_parseHexUint" [label="parseHexUint"]
+"10143_toChecksumHexString" [label="toChecksumHexString"]
+"10143_toString" [label="toString"]
+"10143__unsafeWriteBytesOffset" [label="_unsafeWriteBytesOffset"]
+"10143__unsafeReadBytesOffset" [label="_unsafeReadBytesOffset"]
+"10143_escapeJSON" [label="escapeJSON"]
+"10143_slitherConstructorConstantVariables" [label="slitherConstructorConstantVariables"]
+"10143_parseInt" [label="parseInt"]
+"10143__tryParseUintUncheckedBounds" -> "10143__unsafeReadBytesOffset"
+"10143__tryParseHexUintUncheckedBounds" -> "10143__unsafeReadBytesOffset"
+"10143_tryParseAddress" -> "10143__unsafeReadBytesOffset"
+"10143_parseAddress" -> "10143_tryParseAddress"
+"10143_tryParseInt" -> "10143__tryParseIntUncheckedBounds"
+"10143__tryParseIntUncheckedBounds" -> "10143_tryParseUint"
+"10143__tryParseIntUncheckedBounds" -> "10143__unsafeReadBytesOffset"
+"10143__tryParseUintUncheckedBounds" -> "10143__tryParseChr"
+"10143_tryParseHexUint" -> "10143__tryParseHexUintUncheckedBounds"
+"10143_parseUint" -> "10143_parseUint"
+"10143_escapeJSON" -> "10143__unsafeWriteBytesOffset"
+"10143_escapeJSON" -> "10143__unsafeReadBytesOffset"
+"10143_tryParseAddress" -> "10143_tryParseAddress"
+"10143__tryParseHexUintUncheckedBounds" -> "10143__tryParseChr"
+"10143_parseInt" -> "10143_parseInt"
+"10143_parseHexUint" -> "10143_parseHexUint"
+"10143_tryParseUint" -> "10143__tryParseUintUncheckedBounds"
+"10143_toHexString" -> "10143_toHexString"
+"10143_parseAddress" -> "10143_parseAddress"
+"10143_tryParseAddress" -> "10143__tryParseHexUintUncheckedBounds"
+"10143_toChecksumHexString" -> "10143_toHexString"
+"10143_parseHexUint" -> "10143_tryParseHexUint"
+"10143_parseUint" -> "10143_tryParseUint"
+"10143_parseInt" -> "10143_tryParseInt"
+"10143_toStringSigned" -> "10143_toString"
+}subgraph cluster_solidity {
+label = "[Solidity]"
+"keccak256(uint256,uint256)" 
+"mstore8(uint256,uint256)" 
+"revert StringsInsufficientHexLength(uint256,uint256)" 
+"mload(uint256)" 
+"string.concat()" 
+"byte(uint256,uint256)" 
+"revert StringsInvalidAddressFormat()" 
+"revert StringsInvalidChar()" 
+"mstore(uint256,uint256)" 
+"10143_toStringSigned" -> "string.concat()"
+"10143_parseAddress" -> "revert StringsInvalidAddressFormat()"
+"10143_toHexString" -> "revert StringsInsufficientHexLength(uint256,uint256)"
+"10143_toString" -> "byte(uint256,uint256)"
+"10143_escapeJSON" -> "mstore(uint256,uint256)"
+"10143__unsafeReadBytesOffset" -> "mload(uint256)"
+"10143_toString" -> "mstore8(uint256,uint256)"
+"10143_parseInt" -> "revert StringsInvalidChar()"
+"10143__unsafeWriteBytesOffset" -> "mstore8(uint256,uint256)"
+"10143_parseUint" -> "revert StringsInvalidChar()"
+"10143_toChecksumHexString" -> "keccak256(uint256,uint256)"
+"10143_escapeJSON" -> "mload(uint256)"
+"10143_parseHexUint" -> "revert StringsInvalidChar()"
+}
+}

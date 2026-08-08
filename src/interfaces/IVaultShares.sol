@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.20;
+pragma solidity 0.8.24;
 
 import {IERC4626} from "@openzeppelin/contracts/interfaces/IERC4626.sol";
 import {IVaultData} from "./IVaultData.sol";
@@ -19,8 +19,11 @@ interface IVaultShares is IERC4626, IVaultData {
         address weth;
         address usdc;
     }
-
+    // q is this callable by anyone?
+    //@audit-follow-up - yes, it can be called by anyone
     function updateHoldingAllocation(AllocationData memory tokenAllocationData) external;
 
     function setNotActive() external;
+    // q is this callable by anyone?
+    //@audit-follow-up - yes, it can be called by anyone
 }

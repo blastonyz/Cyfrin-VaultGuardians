@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.20;
+pragma solidity 0.8.24;
 
 import {DataTypes} from "./DataTypes.sol";
 
@@ -16,6 +16,7 @@ interface IPool {
     * @param referralCode Code used to register the integrator originating the operation, for potential rewards.
     *   0 if the action is executed directly by the user, without any middle-man
     */
+    // @audit-follow-up
     function supply(address asset, uint256 amount, address onBehalfOf, uint16 referralCode) external;
 
     /**
@@ -29,6 +30,7 @@ interface IPool {
      *   different wallet
      * @return The final amount withdrawn
      */
+     // @audit-follow-up
     function withdraw(address asset, uint256 amount, address to) external returns (uint256);
 
     /**
@@ -36,5 +38,6 @@ interface IPool {
      * @param asset The address of the underlying asset of the reserve
      * @return The state and configuration data of the reserve
      */
+    // @audit-follow-up
     function getReserveData(address asset) external view returns (DataTypes.ReserveData memory);
 }

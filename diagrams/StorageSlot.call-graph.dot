@@ -1,0 +1,16 @@
+strict digraph {
+rankdir="LR"
+node [shape=box]
+subgraph cluster_8633_StorageSlot {
+label = "StorageSlot"
+"8633_getBytesSlot" [label="getBytesSlot"]
+"8633_getUint256Slot" [label="getUint256Slot"]
+"8633_getInt256Slot" [label="getInt256Slot"]
+"8633_getBytes32Slot" [label="getBytes32Slot"]
+"8633_getStringSlot" [label="getStringSlot"]
+"8633_getAddressSlot" [label="getAddressSlot"]
+"8633_getBooleanSlot" [label="getBooleanSlot"]
+}subgraph cluster_solidity {
+label = "[Solidity]"
+}
+}

@@ -1,0 +1,83 @@
+strict digraph {
+rankdir="LR"
+node [shape=box]
+subgraph cluster_13042_Math {
+label = "Math"
+"13042_tryModExp" [label="tryModExp"]
+"13042_log2" [label="log2"]
+"13042_max" [label="max"]
+"13042_add512" [label="add512"]
+"13042_ternary" [label="ternary"]
+"13042_mulDiv" [label="mulDiv"]
+"13042_average" [label="average"]
+"13042_trySub" [label="trySub"]
+"13042_tryMul" [label="tryMul"]
+"13042_invMod" [label="invMod"]
+"13042_invModPrime" [label="invModPrime"]
+"13042_unsignedRoundsUp" [label="unsignedRoundsUp"]
+"13042_clz" [label="clz"]
+"13042_sqrt" [label="sqrt"]
+"13042_modExp" [label="modExp"]
+"13042_saturatingMul" [label="saturatingMul"]
+"13042_saturatingSub" [label="saturatingSub"]
+"13042_tryAdd" [label="tryAdd"]
+"13042_log10" [label="log10"]
+"13042_tryMod" [label="tryMod"]
+"13042_min" [label="min"]
+"13042_saturatingAdd" [label="saturatingAdd"]
+"13042_log256" [label="log256"]
+"13042__zeroBytes" [label="_zeroBytes"]
+"13042_mul512" [label="mul512"]
+"13042_tryDiv" [label="tryDiv"]
+"13042_ceilDiv" [label="ceilDiv"]
+"13042_mulShr" [label="mulShr"]
+"13042_saturatingMul" -> "13042_ternary"
+"13042_saturatingMul" -> "13042_tryMul"
+"13042_tryModExp" -> "13042__zeroBytes"
+"13042_log256" -> "13042_unsignedRoundsUp"
+"13042_invModPrime" -> "13042_modExp"
+"13042_modExp" -> "13042_tryModExp"
+"13042_mulShr" -> "13042_unsignedRoundsUp"
+"13042__zeroBytes" -> "13042_saturatingSub"
+"13042_saturatingAdd" -> "13042_tryAdd"
+"13042_log2" -> "13042_log2"
+"13042_clz" -> "13042_log2"
+"13042_log256" -> "13042_log256"
+"13042_sqrt" -> "13042_unsignedRoundsUp"
+"13042_mulDiv" -> "13042_ternary"
+"13042_saturatingAdd" -> "13042_ternary"
+"13042_mulShr" -> "13042_mulShr"
+"13042_mulDiv" -> "13042_mul512"
+"13042_log2" -> "13042_unsignedRoundsUp"
+"13042_mulDiv" -> "13042_mulDiv"
+"13042_invMod" -> "13042_ternary"
+"13042_sqrt" -> "13042_sqrt"
+"13042_mulShr" -> "13042_mul512"
+"13042_log10" -> "13042_log10"
+"13042_saturatingSub" -> "13042_trySub"
+"13042_max" -> "13042_ternary"
+"13042_log10" -> "13042_unsignedRoundsUp"
+"13042_mulDiv" -> "13042_unsignedRoundsUp"
+"13042_clz" -> "13042_ternary"
+"13042_min" -> "13042_ternary"
+}subgraph cluster_solidity {
+label = "[Solidity]"
+"staticcall(uint256,uint256,uint256,uint256,uint256,uint256)" 
+"gas()" 
+"mload(uint256)" 
+"abi.encodePacked()" 
+"byte(uint256,uint256)" 
+"mulmod(uint256,uint256,uint256)" 
+"mstore(uint256,uint256)" 
+"13042_tryModExp" -> "mstore(uint256,uint256)"
+"13042_tryModExp" -> "abi.encodePacked()"
+"13042_mul512" -> "mulmod(uint256,uint256,uint256)"
+"13042_tryModExp" -> "gas()"
+"13042_mulDiv" -> "mulmod(uint256,uint256,uint256)"
+"13042_tryModExp" -> "staticcall(uint256,uint256,uint256,uint256,uint256,uint256)"
+"13042__zeroBytes" -> "mload(uint256)"
+"13042_mulShr" -> "mulmod(uint256,uint256,uint256)"
+"13042_tryModExp" -> "mload(uint256)"
+"13042_log2" -> "byte(uint256,uint256)"
+}
+}

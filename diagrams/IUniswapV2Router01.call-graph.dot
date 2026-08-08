@@ -1,0 +1,15 @@
+strict digraph {
+rankdir="LR"
+node [shape=box]
+subgraph cluster_20643_IUniswapV2Router01 {
+label = "IUniswapV2Router01"
+"20643_swapExactTokensForTokens" [label="swapExactTokensForTokens"]
+"20643_addLiquidity" [label="addLiquidity"]
+"20643_removeLiquidity" [label="removeLiquidity"]
+"20643_factory" [label="factory"]
+"20643_swapTokensForExactTokens" [label="swapTokensForExactTokens"]
+"20643_WETH" [label="WETH"]
+}subgraph cluster_solidity {
+label = "[Solidity]"
+}
+}

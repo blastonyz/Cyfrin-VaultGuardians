@@ -1,0 +1,88 @@
+strict digraph {
+rankdir="LR"
+node [shape=box]
+subgraph cluster_19105_VaultGuardiansBase {
+label = "VaultGuardiansBase"
+"19105_becomeTokenGuardian" [label="becomeTokenGuardian"]
+"19105_quitGuardian" [label="quitGuardian"]
+"19105__quitGuardian" [label="_quitGuardian"]
+"19105_getAavePool" [label="getAavePool"]
+"19105__becomeTokenGuardian" [label="_becomeTokenGuardian"]
+"19105_getVaultFromGuardianAndToken" [label="getVaultFromGuardianAndToken"]
+"19105_updateHoldingAllocation" [label="updateHoldingAllocation"]
+"19105_getUniswapV2Router" [label="getUniswapV2Router"]
+"19105__guardianHasNonWethVaults" [label="_guardianHasNonWethVaults"]
+"19105_getGuardianAndDaoCut" [label="getGuardianAndDaoCut"]
+"19105_isApprovedToken" [label="isApprovedToken"]
+"19105_getGuardianStakePrice" [label="getGuardianStakePrice"]
+"19105_becomeGuardian" [label="becomeGuardian"]
+"19105_constructor" [label="constructor"]
+"19105_becomeTokenGuardian" -> "19105__becomeTokenGuardian"
+"19105_becomeGuardian" -> "19105__becomeTokenGuardian"
+"19105_quitGuardian" -> "19105_onlyGuardian"
+"19105_constructor" -> "19105_constructor"
+"19105_quitGuardian" -> "19105__quitGuardian"
+"19105_becomeTokenGuardian" -> "19105_onlyGuardian"
+"19105_quitGuardian" -> "19105__guardianHasNonWethVaults"
+"19105_updateHoldingAllocation" -> "19105_onlyGuardian"
+}subgraph cluster_18395_VaultGuardians {
+label = "VaultGuardians"
+"18395_constructor" [label="constructor"]
+"18395_sweepErc20s" [label="sweepErc20s"]
+"18395_slitherConstructorConstantVariables" [label="slitherConstructorConstantVariables"]
+"18395_updateGuardianAndDaoCut" [label="updateGuardianAndDaoCut"]
+"18395_updateGuardianStakePrice" [label="updateGuardianStakePrice"]
+"18395_slitherConstructorVariables" [label="slitherConstructorVariables"]
+"18395_constructor" -> "18395_constructor"
+"18395_updateGuardianAndDaoCut" -> "18395_onlyOwner"
+"18395_updateGuardianStakePrice" -> "18395_onlyOwner"
+"18395_sweepErc20s" -> "18395_owner"
+}subgraph cluster_7529_Context {
+label = "Context"
+"7529__contextSuffixLength" [label="_contextSuffixLength"]
+"7529__msgSender" [label="_msgSender"]
+"7529__msgData" [label="_msgData"]
+}subgraph cluster_17962_AStaticTokenData {
+label = "AStaticTokenData"
+"17962_constructor" [label="constructor"]
+"17962_getTokenTwo" [label="getTokenTwo"]
+"17962_constructor" -> "17962_constructor"
+}subgraph cluster_147_Ownable {
+label = "Ownable"
+"147_owner" [label="owner"]
+"147__transferOwnership" [label="_transferOwnership"]
+"147__checkOwner" [label="_checkOwner"]
+"147_renounceOwnership" [label="renounceOwnership"]
+"147_constructor" [label="constructor"]
+"147_transferOwnership" [label="transferOwnership"]
+"147_transferOwnership" -> "147__transferOwnership"
+"147_transferOwnership" -> "147_onlyOwner"
+"147__checkOwner" -> "147_owner"
+"147_constructor" -> "147__transferOwnership"
+"147__checkOwner" -> "147__msgSender"
+"147_renounceOwnership" -> "147_onlyOwner"
+"147_renounceOwnership" -> "147__transferOwnership"
+}subgraph cluster_18007_AStaticUSDCData {
+label = "AStaticUSDCData"
+"18007_constructor" [label="constructor"]
+"18007_getTokenOne" [label="getTokenOne"]
+"18007_constructor" -> "18007_constructor"
+}subgraph cluster_18043_AStaticWethData {
+label = "AStaticWethData"
+"18043_constructor" [label="constructor"]
+"18043_getWeth" [label="getWeth"]
+}subgraph cluster_solidity {
+label = "[Solidity]"
+"revert OwnableInvalidOwner(address)" 
+"revert VaultGuardiansBase__TransferFailed()" 
+"revert VaultGuardiansBase__NotApprovedToken(address)" 
+"revert OwnableUnauthorizedAccount(address)" 
+"revert VaultGuardiansBase__CantQuitWethWithThisFunction()" 
+"19105__becomeTokenGuardian" -> "revert VaultGuardiansBase__TransferFailed()"
+"19105_quitGuardian" -> "revert VaultGuardiansBase__CantQuitWethWithThisFunction()"
+"147_transferOwnership" -> "revert OwnableInvalidOwner(address)"
+"147_constructor" -> "revert OwnableInvalidOwner(address)"
+"147__checkOwner" -> "revert OwnableUnauthorizedAccount(address)"
+"19105_becomeTokenGuardian" -> "revert VaultGuardiansBase__NotApprovedToken(address)"
+}
+}

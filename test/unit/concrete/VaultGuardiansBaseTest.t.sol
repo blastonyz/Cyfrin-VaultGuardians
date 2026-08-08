@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.20;
+pragma solidity 0.8.24;
 
 import {Base_Test} from "../../Base.t.sol";
 import {VaultShares} from "../../../src/protocol/VaultShares.sol";
@@ -68,6 +68,15 @@ contract VaultGuardiansBaseTest is Base_Test {
         vm.stopPrank();
 
         assertEq(address(vaultGuardians.getVaultFromGuardianAndToken(guardian, weth)), wethVault);
+    }
+
+    function test_TryToBecomeGuardianWithoutEnoughWeth() public {
+        weth.mint(1 ether, guardian);
+        vm.startPrank(guardian);
+        weth.approve(address(vaultGuardians), mintAmount);
+        vm.expectRevert();
+        vaultGuardians.becomeGuardian(allocationData);
+        vm.stopPrank();
     }
 
     function testBecomeGuardianMovesStakePrice() public {

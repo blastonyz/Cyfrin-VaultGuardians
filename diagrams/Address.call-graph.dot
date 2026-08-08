@@ -1,0 +1,40 @@
+strict digraph {
+rankdir="LR"
+node [shape=box]
+subgraph cluster_6698_Address {
+label = "Address"
+"6698_functionCall" [label="functionCall"]
+"6698_sendValue" [label="sendValue"]
+"6698_verifyCallResult" [label="verifyCallResult"]
+"6698_verifyCallResultFromTarget" [label="verifyCallResultFromTarget"]
+"6698_functionCallWithValue" [label="functionCallWithValue"]
+"6698_functionDelegateCall" [label="functionDelegateCall"]
+"6698_functionStaticCall" [label="functionStaticCall"]
+"6698_functionCall" -> "6698_functionCallWithValue"
+}subgraph cluster_solidity {
+label = "[Solidity]"
+"revert FailedCall()" 
+"code(address)" 
+"balance(address)" 
+"revert InsufficientBalance(uint256,uint256)" 
+"revert AddressEmptyCode(address)" 
+"6698_functionCallWithValue" -> "balance(address)"
+"6698_functionStaticCall" -> "revert FailedCall()"
+"6698_functionDelegateCall" -> "revert FailedCall()"
+"6698_verifyCallResultFromTarget" -> "code(address)"
+"6698_verifyCallResultFromTarget" -> "revert FailedCall()"
+"6698_verifyCallResult" -> "revert FailedCall()"
+"6698_sendValue" -> "revert InsufficientBalance(uint256,uint256)"
+"6698_functionCallWithValue" -> "revert InsufficientBalance(uint256,uint256)"
+"6698_functionCallWithValue" -> "code(address)"
+"6698_functionDelegateCall" -> "code(address)"
+"6698_sendValue" -> "revert FailedCall()"
+"6698_sendValue" -> "balance(address)"
+"6698_verifyCallResultFromTarget" -> "revert AddressEmptyCode(address)"
+"6698_functionStaticCall" -> "revert AddressEmptyCode(address)"
+"6698_functionCallWithValue" -> "revert AddressEmptyCode(address)"
+"6698_functionDelegateCall" -> "revert AddressEmptyCode(address)"
+"6698_functionStaticCall" -> "code(address)"
+"6698_functionCallWithValue" -> "revert FailedCall()"
+}
+}

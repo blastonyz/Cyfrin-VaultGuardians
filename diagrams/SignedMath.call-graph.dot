@@ -1,0 +1,16 @@
+strict digraph {
+rankdir="LR"
+node [shape=box]
+subgraph cluster_14951_SignedMath {
+label = "SignedMath"
+"14951_average" [label="average"]
+"14951_ternary" [label="ternary"]
+"14951_abs" [label="abs"]
+"14951_min" [label="min"]
+"14951_max" [label="max"]
+"14951_min" -> "14951_ternary"
+"14951_max" -> "14951_ternary"
+}subgraph cluster_solidity {
+label = "[Solidity]"
+}
+}

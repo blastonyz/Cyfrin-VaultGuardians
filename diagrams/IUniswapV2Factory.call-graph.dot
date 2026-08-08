@@ -1,0 +1,17 @@
+strict digraph {
+rankdir="LR"
+node [shape=box]
+subgraph cluster_20550_IUniswapV2Factory {
+label = "IUniswapV2Factory"
+"20550_allPairs" [label="allPairs"]
+"20550_setFeeToSetter" [label="setFeeToSetter"]
+"20550_createPair" [label="createPair"]
+"20550_setFeeTo" [label="setFeeTo"]
+"20550_allPairsLength" [label="allPairsLength"]
+"20550_feeToSetter" [label="feeToSetter"]
+"20550_getPair" [label="getPair"]
+"20550_feeTo" [label="feeTo"]
+}subgraph cluster_solidity {
+label = "[Solidity]"
+}
+}

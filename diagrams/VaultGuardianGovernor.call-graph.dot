@@ -1,0 +1,313 @@
+strict digraph {
+rankdir="LR"
+node [shape=box]
+subgraph cluster_4160_IERC1155Receiver {
+label = "IERC1155Receiver"
+"4160_onERC1155Received" [label="onERC1155Received"]
+"4160_onERC1155BatchReceived" [label="onERC1155BatchReceived"]
+}subgraph cluster_18113_VaultGuardianGovernor {
+label = "VaultGuardianGovernor"
+"18113_votingPeriod" [label="votingPeriod"]
+"18113_votingDelay" [label="votingDelay"]
+"18113_slitherConstructorConstantVariables" [label="slitherConstructorConstantVariables"]
+"18113_quorum" [label="quorum"]
+"18113_constructor" [label="constructor"]
+"18113_quorum" -> "18113_quorum"
+"18113_constructor" -> "18113_constructor"
+}subgraph cluster_3939_IERC5267 {
+label = "IERC5267"
+"3939_eip712Domain" [label="eip712Domain"]
+}subgraph cluster_6308_IERC721Receiver {
+label = "IERC721Receiver"
+"6308_onERC721Received" [label="onERC721Received"]
+}subgraph cluster_3014_GovernorVotesQuorumFraction {
+label = "GovernorVotesQuorumFraction"
+"3014_quorumNumerator" [label="quorumNumerator"]
+"3014_constructor" [label="constructor"]
+"3014__optimisticUpperLookupRecent" [label="_optimisticUpperLookupRecent"]
+"3014_quorumDenominator" [label="quorumDenominator"]
+"3014__updateQuorumNumerator" [label="_updateQuorumNumerator"]
+"3014_quorum" [label="quorum"]
+"3014_updateQuorumNumerator" [label="updateQuorumNumerator"]
+"3014_quorumNumerator" -> "3014__optimisticUpperLookupRecent"
+"3014_quorum" -> "3014_quorumDenominator"
+"3014_updateQuorumNumerator" -> "3014_onlyGovernance"
+"3014__updateQuorumNumerator" -> "3014_quorumNumerator"
+"3014__updateQuorumNumerator" -> "3014_quorumDenominator"
+"3014__updateQuorumNumerator" -> "3014_clock"
+"3014_constructor" -> "3014__updateQuorumNumerator"
+"3014_updateQuorumNumerator" -> "3014__updateQuorumNumerator"
+"3014_quorum" -> "3014_quorumNumerator"
+"3014_quorum" -> "3014_token"
+}subgraph cluster_2822_GovernorVotes {
+label = "GovernorVotes"
+"2822_token" [label="token"]
+"2822__getVotes" [label="_getVotes"]
+"2822_clock" [label="clock"]
+"2822_constructor" [label="constructor"]
+"2822_CLOCK_MODE" [label="CLOCK_MODE"]
+"2822_CLOCK_MODE" -> "2822_token"
+"2822__getVotes" -> "2822_token"
+"2822_clock" -> "2822_token"
+}subgraph cluster_7529_Context {
+label = "Context"
+"7529__contextSuffixLength" [label="_contextSuffixLength"]
+"7529__msgSender" [label="_msgSender"]
+"7529__msgData" [label="_msgData"]
+}subgraph cluster_2475_IGovernor {
+label = "IGovernor"
+"2475_getVotes" [label="getVotes"]
+"2475_COUNTING_MODE" [label="COUNTING_MODE"]
+"2475_getProposalId" [label="getProposalId"]
+"2475_name" [label="name"]
+"2475_getVotesWithParams" [label="getVotesWithParams"]
+"2475_castVoteWithReasonAndParamsBySig" [label="castVoteWithReasonAndParamsBySig"]
+"2475_proposalDeadline" [label="proposalDeadline"]
+"2475_proposalThreshold" [label="proposalThreshold"]
+"2475_execute" [label="execute"]
+"2475_version" [label="version"]
+"2475_proposalProposer" [label="proposalProposer"]
+"2475_castVoteBySig" [label="castVoteBySig"]
+"2475_quorum" [label="quorum"]
+"2475_votingPeriod" [label="votingPeriod"]
+"2475_proposalNeedsQueuing" [label="proposalNeedsQueuing"]
+"2475_votingDelay" [label="votingDelay"]
+"2475_hasVoted" [label="hasVoted"]
+"2475_queue" [label="queue"]
+"2475_proposalSnapshot" [label="proposalSnapshot"]
+"2475_castVoteWithReasonAndParams" [label="castVoteWithReasonAndParams"]
+"2475_castVote" [label="castVote"]
+"2475_castVoteWithReason" [label="castVoteWithReason"]
+"2475_proposalEta" [label="proposalEta"]
+"2475_propose" [label="propose"]
+"2475_hashProposal" [label="hashProposal"]
+"2475_state" [label="state"]
+"2475_cancel" [label="cancel"]
+}subgraph cluster_10829_EIP712 {
+label = "EIP712"
+"10829__domainSeparatorV4" [label="_domainSeparatorV4"]
+"10829__EIP712Version" [label="_EIP712Version"]
+"10829_constructor" [label="constructor"]
+"10829_eip712Domain" [label="eip712Domain"]
+"10829__EIP712Name" [label="_EIP712Name"]
+"10829__buildDomainSeparator" [label="_buildDomainSeparator"]
+"10829__hashTypedDataV4" [label="_hashTypedDataV4"]
+"10829__hashTypedDataV4" -> "10829__domainSeparatorV4"
+"10829__domainSeparatorV4" -> "10829__buildDomainSeparator"
+"10829_constructor" -> "10829__buildDomainSeparator"
+"10829_eip712Domain" -> "10829__EIP712Version"
+"10829_eip712Domain" -> "10829__EIP712Name"
+}subgraph cluster_11373_ERC165 {
+label = "ERC165"
+"11373_supportsInterface" [label="supportsInterface"]
+}subgraph cluster_2002_Governor {
+label = "Governor"
+"2002_getVotes" [label="getVotes"]
+"2002_votingDelay" [label="votingDelay"]
+"2002_receive" [label="receive"]
+"2002_getVotesWithParams" [label="getVotesWithParams"]
+"2002__validateExtendedVoteSig" [label="_validateExtendedVoteSig"]
+"2002_votingPeriod" [label="votingPeriod"]
+"2002_onERC1155BatchReceived" [label="onERC1155BatchReceived"]
+"2002__quorumReached" [label="_quorumReached"]
+"2002_name" [label="name"]
+"2002_proposalNeedsQueuing" [label="proposalNeedsQueuing"]
+"2002_execute" [label="execute"]
+"2002__validateCancel" [label="_validateCancel"]
+"2002_CLOCK_MODE" [label="CLOCK_MODE"]
+"2002_supportsInterface" [label="supportsInterface"]
+"2002__castVote" [label="_castVote"]
+"2002_castVoteBySig" [label="castVoteBySig"]
+"2002_propose" [label="propose"]
+"2002__voteSucceeded" [label="_voteSucceeded"]
+"2002__executeOperations" [label="_executeOperations"]
+"2002__defaultParams" [label="_defaultParams"]
+"2002__cancel" [label="_cancel"]
+"2002__countVote" [label="_countVote"]
+"2002_cancel" [label="cancel"]
+"2002__isValidDescriptionForProposer" [label="_isValidDescriptionForProposer"]
+"2002_state" [label="state"]
+"2002__executor" [label="_executor"]
+"2002_proposalSnapshot" [label="proposalSnapshot"]
+"2002_proposalProposer" [label="proposalProposer"]
+"2002_castVoteWithReasonAndParams" [label="castVoteWithReasonAndParams"]
+"2002__validateVoteSig" [label="_validateVoteSig"]
+"2002_hashProposal" [label="hashProposal"]
+"2002_proposalDeadline" [label="proposalDeadline"]
+"2002_onERC1155Received" [label="onERC1155Received"]
+"2002_quorum" [label="quorum"]
+"2002_castVoteWithReasonAndParamsBySig" [label="castVoteWithReasonAndParamsBySig"]
+"2002__getVotes" [label="_getVotes"]
+"2002_proposalThreshold" [label="proposalThreshold"]
+"2002__checkGovernance" [label="_checkGovernance"]
+"2002_castVote" [label="castVote"]
+"2002_constructor" [label="constructor"]
+"2002_onERC721Received" [label="onERC721Received"]
+"2002_getProposalId" [label="getProposalId"]
+"2002__propose" [label="_propose"]
+"2002_version" [label="version"]
+"2002_queue" [label="queue"]
+"2002_relay" [label="relay"]
+"2002_clock" [label="clock"]
+"2002_castVoteWithReason" [label="castVoteWithReason"]
+"2002__unsafeReadBytesOffset" [label="_unsafeReadBytesOffset"]
+"2002__encodeStateBitmap" [label="_encodeStateBitmap"]
+"2002__queueOperations" [label="_queueOperations"]
+"2002__tallyUpdated" [label="_tallyUpdated"]
+"2002__validateStateBitmap" [label="_validateStateBitmap"]
+"2002_proposalEta" [label="proposalEta"]
+"2002_propose" -> "2002_proposalThreshold"
+"2002__validateCancel" -> "2002_state"
+"2002_queue" -> "2002_getProposalId"
+"2002_castVoteWithReason" -> "2002__msgSender"
+"2002_state" -> "2002_clock"
+"2002_cancel" -> "2002__validateCancel"
+"2002_castVoteWithReason" -> "2002__castVote"
+"2002__cancel" -> "2002_getProposalId"
+"2002_castVoteWithReasonAndParamsBySig" -> "2002__castVote"
+"2002__cancel" -> "2002__encodeStateBitmap"
+"2002_getVotes" -> "2002__defaultParams"
+"2002__castVote" -> "2002__defaultParams"
+"2002_castVoteWithReasonAndParams" -> "2002__castVote"
+"2002_cancel" -> "2002__cancel"
+"2002__validateExtendedVoteSig" -> "2002__useNonce"
+"2002_getVotes" -> "2002__getVotes"
+"2002_onERC1155BatchReceived" -> "2002__executor"
+"2002_propose" -> "2002__isValidDescriptionForProposer"
+"2002_execute" -> "2002_getProposalId"
+"2002_execute" -> "2002__executor"
+"2002__castVote" -> "2002__tallyUpdated"
+"2002_onERC721Received" -> "2002__executor"
+"2002__checkGovernance" -> "2002__executor"
+"2002_cancel" -> "2002__msgSender"
+"2002_castVoteWithReasonAndParamsBySig" -> "2002__validateExtendedVoteSig"
+"2002_castVoteBySig" -> "2002__validateVoteSig"
+"2002_onERC1155Received" -> "2002__executor"
+"2002_propose" -> "2002__propose"
+"2002__castVote" -> "2002__castVote"
+"2002_propose" -> "2002__msgSender"
+"2002__checkGovernance" -> "2002__msgSender"
+"2002_execute" -> "2002__executeOperations"
+"2002_castVote" -> "2002__castVote"
+"2002__validateVoteSig" -> "2002__hashTypedDataV4"
+"2002_constructor" -> "2002_constructor"
+"2002__cancel" -> "2002__validateStateBitmap"
+"2002__validateStateBitmap" -> "2002__encodeStateBitmap"
+"2002_getProposalId" -> "2002_hashProposal"
+"2002__validateCancel" -> "2002_proposalProposer"
+"2002__propose" -> "2002_votingDelay"
+"2002_getVotesWithParams" -> "2002__getVotes"
+"2002_queue" -> "2002__validateStateBitmap"
+"2002_state" -> "2002__voteSucceeded"
+"2002__validateVoteSig" -> "2002__useNonce"
+"2002_receive" -> "2002__executor"
+"2002__castVote" -> "2002__getVotes"
+"2002_castVote" -> "2002__msgSender"
+"2002__castVote" -> "2002__validateStateBitmap"
+"2002_queue" -> "2002__encodeStateBitmap"
+"2002_constructor" -> "2002_version"
+"2002_propose" -> "2002_getVotes"
+"2002_state" -> "2002_proposalDeadline"
+"2002__isValidDescriptionForProposer" -> "2002__unsafeReadBytesOffset"
+"2002_queue" -> "2002__queueOperations"
+"2002_state" -> "2002__quorumReached"
+"2002__checkGovernance" -> "2002__msgData"
+"2002__propose" -> "2002_state"
+"2002__castVote" -> "2002__encodeStateBitmap"
+"2002__validateStateBitmap" -> "2002_state"
+"2002_castVoteBySig" -> "2002__castVote"
+"2002__castVote" -> "2002__countVote"
+"2002_propose" -> "2002_clock"
+"2002_castVoteWithReasonAndParams" -> "2002__msgSender"
+"2002__propose" -> "2002_getProposalId"
+"2002_cancel" -> "2002_getProposalId"
+"2002_supportsInterface" -> "2002_supportsInterface"
+"2002_state" -> "2002_proposalSnapshot"
+"2002__propose" -> "2002_votingPeriod"
+"2002_execute" -> "2002__encodeStateBitmap"
+"2002_execute" -> "2002__validateStateBitmap"
+"2002_relay" -> "2002_onlyGovernance"
+"2002__castVote" -> "2002_proposalSnapshot"
+"2002__propose" -> "2002_clock"
+"2002__validateExtendedVoteSig" -> "2002__hashTypedDataV4"
+"2002_state" -> "2002_proposalEta"
+}subgraph cluster_2708_GovernorCountingSimple {
+label = "GovernorCountingSimple"
+"2708__voteSucceeded" [label="_voteSucceeded"]
+"2708_proposalVotes" [label="proposalVotes"]
+"2708__quorumReached" [label="_quorumReached"]
+"2708_COUNTING_MODE" [label="COUNTING_MODE"]
+"2708__countVote" [label="_countVote"]
+"2708_hasVoted" [label="hasVoted"]
+"2708__quorumReached" -> "2708_proposalSnapshot"
+"2708__quorumReached" -> "2708_quorum"
+}subgraph cluster_11385_IERC165 {
+label = "IERC165"
+"11385_supportsInterface" [label="supportsInterface"]
+}subgraph cluster_3965_IERC6372 {
+label = "IERC6372"
+"3965_CLOCK_MODE" [label="CLOCK_MODE"]
+"3965_clock" [label="clock"]
+}subgraph cluster_8127_Nonces {
+label = "Nonces"
+"8127__useCheckedNonce" [label="_useCheckedNonce"]
+"8127_nonces" [label="nonces"]
+"8127__useNonce" [label="_useNonce"]
+"8127__useCheckedNonce" -> "8127__useNonce"
+}subgraph cluster_solidity {
+label = "[Solidity]"
+"revert GovernorAlreadyCastVote(address)" 
+"type()" 
+"revert GovernorUnableToCancel(uint256,address)" 
+"revert GovernorInvalidVoteType()" 
+"revert GovernorDisabledDeposit()" 
+"revert GovernorInvalidQuorumFraction(uint256,uint256)" 
+"revert GovernorQueueNotImplemented()" 
+"mload(uint256)" 
+"revert InvalidAccountNonce(address,uint256)" 
+"revert GovernorInvalidSignature(address)" 
+"abi.encode()" 
+"revert GovernorInvalidProposalLength(uint256,uint256,uint256)" 
+"keccak256(bytes)" 
+"revert GovernorOnlyExecutor(address)" 
+"revert GovernorInsufficientProposerVotes(address,uint256,uint256)" 
+"revert GovernorRestrictedProposer(address)" 
+"revert GovernorUnexpectedProposalState(uint256,IGovernor.ProposalState,bytes32)" 
+"revert GovernorNonexistentProposal(uint256)" 
+"2002_propose" -> "revert GovernorInsufficientProposerVotes(address,uint256,uint256)"
+"2002_queue" -> "revert GovernorQueueNotImplemented()"
+"11373_supportsInterface" -> "type()"
+"2002_receive" -> "revert GovernorDisabledDeposit()"
+"2002__validateStateBitmap" -> "revert GovernorUnexpectedProposalState(uint256,IGovernor.ProposalState,bytes32)"
+"2002__checkGovernance" -> "revert GovernorOnlyExecutor(address)"
+"2002_execute" -> "keccak256(bytes)"
+"2708__countVote" -> "revert GovernorInvalidVoteType()"
+"2002_onERC1155BatchReceived" -> "revert GovernorDisabledDeposit()"
+"2002_onERC721Received" -> "revert GovernorDisabledDeposit()"
+"2002_supportsInterface" -> "type()"
+"10829_constructor" -> "keccak256(bytes)"
+"10829__buildDomainSeparator" -> "abi.encode()"
+"2002__propose" -> "revert GovernorUnexpectedProposalState(uint256,IGovernor.ProposalState,bytes32)"
+"2002_castVoteBySig" -> "revert GovernorInvalidSignature(address)"
+"3014__updateQuorumNumerator" -> "revert GovernorInvalidQuorumFraction(uint256,uint256)"
+"2708__countVote" -> "revert GovernorAlreadyCastVote(address)"
+"18113_slitherConstructorConstantVariables" -> "keccak256(bytes)"
+"2002_cancel" -> "revert GovernorUnableToCancel(uint256,address)"
+"10829__buildDomainSeparator" -> "keccak256(bytes)"
+"2002_onERC1155Received" -> "revert GovernorDisabledDeposit()"
+"2002__validateVoteSig" -> "abi.encode()"
+"8127__useCheckedNonce" -> "revert InvalidAccountNonce(address,uint256)"
+"2002__checkGovernance" -> "keccak256(bytes)"
+"2002_propose" -> "revert GovernorRestrictedProposer(address)"
+"2002_hashProposal" -> "abi.encode()"
+"2002_castVoteWithReasonAndParamsBySig" -> "revert GovernorInvalidSignature(address)"
+"2002_hashProposal" -> "keccak256(bytes)"
+"2002__validateVoteSig" -> "keccak256(bytes)"
+"2002__validateExtendedVoteSig" -> "keccak256(bytes)"
+"2002__propose" -> "keccak256(bytes)"
+"2002__unsafeReadBytesOffset" -> "mload(uint256)"
+"2002__propose" -> "revert GovernorInvalidProposalLength(uint256,uint256,uint256)"
+"2002__validateExtendedVoteSig" -> "abi.encode()"
+"2002_state" -> "revert GovernorNonexistentProposal(uint256)"
+}
+}

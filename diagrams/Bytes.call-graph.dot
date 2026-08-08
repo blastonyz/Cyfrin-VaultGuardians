@@ -1,0 +1,46 @@
+strict digraph {
+rankdir="LR"
+node [shape=box]
+subgraph cluster_7499_Bytes {
+label = "Bytes"
+"7499__unsafeReadBytesOffset" [label="_unsafeReadBytesOffset"]
+"7499_reverseBytes32" [label="reverseBytes32"]
+"7499_indexOf" [label="indexOf"]
+"7499_toNibbles" [label="toNibbles"]
+"7499_slice" [label="slice"]
+"7499_equal" [label="equal"]
+"7499_reverseBytes4" [label="reverseBytes4"]
+"7499_concat" [label="concat"]
+"7499_reverseBytes8" [label="reverseBytes8"]
+"7499_clz" [label="clz"]
+"7499_splice" [label="splice"]
+"7499_reverseBytes16" [label="reverseBytes16"]
+"7499_reverseBytes2" [label="reverseBytes2"]
+"7499_lastIndexOf" [label="lastIndexOf"]
+"7499_replace" [label="replace"]
+"7499_lastIndexOf" -> "7499_lastIndexOf"
+"7499_replace" -> "7499_replace"
+"7499_indexOf" -> "7499__unsafeReadBytesOffset"
+"7499_splice" -> "7499_splice"
+"7499_lastIndexOf" -> "7499__unsafeReadBytesOffset"
+"7499_clz" -> "7499__unsafeReadBytesOffset"
+"7499_slice" -> "7499_slice"
+"7499_indexOf" -> "7499_indexOf"
+}subgraph cluster_solidity {
+label = "[Solidity]"
+"mload(uint256)" 
+"mstore(uint256,uint256)" 
+"keccak256(bytes)" 
+"mcopy(uint256,uint256,uint256)" 
+"7499__unsafeReadBytesOffset" -> "mload(uint256)"
+"7499_toNibbles" -> "mload(uint256)"
+"7499_concat" -> "mload(uint256)"
+"7499_toNibbles" -> "mstore(uint256,uint256)"
+"7499_equal" -> "keccak256(bytes)"
+"7499_replace" -> "mcopy(uint256,uint256,uint256)"
+"7499_splice" -> "mstore(uint256,uint256)"
+"7499_splice" -> "mcopy(uint256,uint256,uint256)"
+"7499_slice" -> "mcopy(uint256,uint256,uint256)"
+"7499_concat" -> "mcopy(uint256,uint256,uint256)"
+}
+}

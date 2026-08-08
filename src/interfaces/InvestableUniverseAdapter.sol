@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.20;
+pragma solidity 0.8.24;
 
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-
+// @audit-info - Is empty interface
 interface IInvestableUniverseAdapter {
 // function invest(IERC20 token, uint256 amount) external;
 // function divest(IERC20 token, uint256 amount) external;

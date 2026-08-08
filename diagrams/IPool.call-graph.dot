@@ -1,0 +1,12 @@
+strict digraph {
+rankdir="LR"
+node [shape=box]
+subgraph cluster_20487_IPool {
+label = "IPool"
+"20487_getReserveData" [label="getReserveData"]
+"20487_supply" [label="supply"]
+"20487_withdraw" [label="withdraw"]
+}subgraph cluster_solidity {
+label = "[Solidity]"
+}
+}

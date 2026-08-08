@@ -1,0 +1,44 @@
+strict digraph {
+rankdir="LR"
+node [shape=box]
+subgraph cluster_11000_MessageHashUtils {
+label = "MessageHashUtils"
+"11000_toDomainSeparator" [label="toDomainSeparator"]
+"11000_toDomainTypeHash" [label="toDomainTypeHash"]
+"11000_toTypedDataHash" [label="toTypedDataHash"]
+"11000_toDataWithIntendedValidatorHash" [label="toDataWithIntendedValidatorHash"]
+"11000_toEthSignedMessageHash" [label="toEthSignedMessageHash"]
+"11000_toDomainSeparator" -> "11000_toDomainSeparator"
+"11000_toDomainSeparator" -> "11000_toDomainTypeHash"
+}subgraph cluster_solidity {
+label = "[Solidity]"
+"revert ERC5267ExtensionsNotSupported()" 
+"keccak256(uint256,uint256)" 
+"mstore8(uint256,uint256)" 
+"bytes.concat()" 
+"mload(uint256)" 
+"abi.encodePacked()" 
+"keccak256(bytes)" 
+"mstore(uint256,uint256)" 
+"11000_toDomainTypeHash" -> "keccak256(uint256,uint256)"
+"11000_toEthSignedMessageHash" -> "keccak256(uint256,uint256)"
+"11000_toDataWithIntendedValidatorHash" -> "mstore(uint256,uint256)"
+"11000_toDomainSeparator" -> "mload(uint256)"
+"11000_toDomainSeparator" -> "keccak256(bytes)"
+"11000_toDataWithIntendedValidatorHash" -> "keccak256(bytes)"
+"11000_toEthSignedMessageHash" -> "bytes.concat()"
+"11000_toEthSignedMessageHash" -> "mstore(uint256,uint256)"
+"11000_toDataWithIntendedValidatorHash" -> "keccak256(uint256,uint256)"
+"11000_toDomainTypeHash" -> "revert ERC5267ExtensionsNotSupported()"
+"11000_toDomainSeparator" -> "keccak256(uint256,uint256)"
+"11000_toTypedDataHash" -> "mload(uint256)"
+"11000_toDomainTypeHash" -> "mload(uint256)"
+"11000_toTypedDataHash" -> "mstore(uint256,uint256)"
+"11000_toDomainSeparator" -> "mstore(uint256,uint256)"
+"11000_toTypedDataHash" -> "keccak256(uint256,uint256)"
+"11000_toDomainTypeHash" -> "mstore8(uint256,uint256)"
+"11000_toDataWithIntendedValidatorHash" -> "abi.encodePacked()"
+"11000_toEthSignedMessageHash" -> "keccak256(bytes)"
+"11000_toDomainTypeHash" -> "mstore(uint256,uint256)"
+}
+}

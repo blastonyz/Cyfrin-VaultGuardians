@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.20;
+pragma solidity 0.8.24;
 
 import {Governor} from "@openzeppelin/contracts/governance/Governor.sol";
 import {GovernorCountingSimple} from "@openzeppelin/contracts/governance/extensions/GovernorCountingSimple.sol";
@@ -8,6 +8,7 @@ import {GovernorVotesQuorumFraction} from
     "@openzeppelin/contracts/governance/extensions/GovernorVotesQuorumFraction.sol";
 
 contract VaultGuardianGovernor is Governor, GovernorCountingSimple, GovernorVotes, GovernorVotesQuorumFraction {
+    // q which entails 4 quorum votes?
     constructor(IVotes _voteToken)
         Governor("VaultGuardianGovernor")
         GovernorVotes(_voteToken)
@@ -23,7 +24,8 @@ contract VaultGuardianGovernor is Governor, GovernorCountingSimple, GovernorVote
     }
 
     // The following functions are overrides required by Solidity.
-
+    // q what is the role of this function?
+    // @audit-follow-up could anyone change the quorum?
     function quorum(uint256 blockNumber)
         public
         view

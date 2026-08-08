@@ -1,0 +1,46 @@
+strict digraph {
+rankdir="LR"
+node [shape=box]
+subgraph cluster_8059_Memory {
+label = "Memory"
+"8059__asSlice" [label="_asSlice"]
+"8059_length" [label="length"]
+"8059_slice" [label="slice"]
+"8059__pointer" [label="_pointer"]
+"8059_isReserved" [label="isReserved"]
+"8059_unsafeSetFreeMemoryPointer" [label="unsafeSetFreeMemoryPointer"]
+"8059_asSlice" [label="asSlice"]
+"8059_equal" [label="equal"]
+"8059_forward" [label="forward"]
+"8059_toBytes" [label="toBytes"]
+"8059_load" [label="load"]
+"8059_getFreeMemoryPointer" [label="getFreeMemoryPointer"]
+"8059_load" -> "8059_length"
+"8059_equal" -> "8059__pointer"
+"8059_toBytes" -> "8059_length"
+"8059_isReserved" -> "8059_forward"
+"8059_isReserved" -> "8059__pointer"
+"8059_slice" -> "8059__pointer"
+"8059_toBytes" -> "8059__pointer"
+"8059_isReserved" -> "8059_length"
+"8059_slice" -> "8059_length"
+"8059_slice" -> "8059__asSlice"
+"8059_isReserved" -> "8059_getFreeMemoryPointer"
+"8059_slice" -> "8059_forward"
+"8059_equal" -> "8059_length"
+}subgraph cluster_solidity {
+label = "[Solidity]"
+"keccak256(uint256,uint256)" 
+"mload(uint256)" 
+"mstore(uint256,uint256)" 
+"mcopy(uint256,uint256,uint256)" 
+"8059_asSlice" -> "mload(uint256)"
+"8059_toBytes" -> "mcopy(uint256,uint256,uint256)"
+"8059_equal" -> "keccak256(uint256,uint256)"
+"8059_toBytes" -> "mload(uint256)"
+"8059_load" -> "mload(uint256)"
+"8059_toBytes" -> "mstore(uint256,uint256)"
+"8059_unsafeSetFreeMemoryPointer" -> "mstore(uint256,uint256)"
+"8059_getFreeMemoryPointer" -> "mload(uint256)"
+}
+}

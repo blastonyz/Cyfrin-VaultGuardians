@@ -25,7 +25,7 @@
  * |_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_|
  */
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.20;
+pragma solidity 0.8.24;
 
 import {VaultShares} from "./VaultShares.sol";
 import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
@@ -65,6 +65,7 @@ contract VaultGuardiansBase is AStaticTokenData, IVaultData {
     uint256 private constant GUARDIAN_FEE = 0.1 ether;
 
     // DAO updatable values
+    // e min amount of weth to become a guardian
     uint256 internal s_guardianStakePrice = 10 ether;
     uint256 internal s_guardianAndDaoCut = 1000;
 
@@ -120,6 +121,9 @@ contract VaultGuardiansBase is AStaticTokenData, IVaultData {
      * 
      * @param wethAllocationData the allocation data for the WETH vault
      */
+
+     // q is this public callable by anyone?
+     // @audit-follow-up yes, anyone could call this function, anyone could become a guardian
     function becomeGuardian(AllocationData memory wethAllocationData) external returns (address) {
         VaultShares wethVault =
         new VaultShares(IVaultShares.ConstructorData({
@@ -217,6 +221,7 @@ contract VaultGuardiansBase is AStaticTokenData, IVaultData {
      * @param token The token vault whose allocation ratio is to be updated
      * @param tokenAllocationData The new allocation data
      */
+     // @audit-follow-up any token guardian could update the allocation data
     function updateHoldingAllocation(IERC20 token, AllocationData memory tokenAllocationData)
         external
         onlyGuardian(token)
@@ -236,6 +241,7 @@ contract VaultGuardiansBase is AStaticTokenData, IVaultData {
     /*//////////////////////////////////////////////////////////////
                            PRIVATE FUNCTIONS
     //////////////////////////////////////////////////////////////*/
+    // @audit-follow-up ?
     function _quitGuardian(IERC20 token) private returns (uint256) {
         IVaultShares tokenVault = IVaultShares(s_guardians[msg.sender][token]);
         s_guardians[msg.sender][token] = IVaultShares(address(0));

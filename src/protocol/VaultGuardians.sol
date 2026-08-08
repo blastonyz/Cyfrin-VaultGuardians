@@ -25,7 +25,7 @@
  * |_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_|
  */
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.20;
+pragma solidity 0.8.24;
 
 import {VaultGuardiansBase, IERC20, SafeERC20} from "./VaultGuardiansBase.sol";
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
@@ -52,6 +52,8 @@ contract VaultGuardians is Ownable, VaultGuardiansBase {
     /*//////////////////////////////////////////////////////////////
                                FUNCTIONS
     //////////////////////////////////////////////////////////////*/
+    // @uadit-info missing 0x0 address for some parameters
+
     constructor(
         address aavePool,
         address uniswapV2Router,
@@ -68,6 +70,7 @@ contract VaultGuardians is Ownable, VaultGuardiansBase {
      * @notice Updates the stake price for guardians. 
      * @param newStakePrice The new stake price in wei
      */
+     // @audit-follow-up 
     function updateGuardianStakePrice(uint256 newStakePrice) external onlyOwner {
         s_guardianStakePrice = newStakePrice;
         emit VaultGuardians__UpdatedStakePrice(s_guardianStakePrice, newStakePrice);
@@ -79,6 +82,7 @@ contract VaultGuardians is Ownable, VaultGuardiansBase {
      * @dev this value will be divided by the number of shares whenever a user deposits into a vault
      * @dev historical vaults will not have their cuts updated, only vaults moving forward
      */
+    // @audit-follow-up this is centralized, only owner can update the cut
     function updateGuardianAndDaoCut(uint256 newCut) external onlyOwner {
         s_guardianAndDaoCut = newCut;
         emit VaultGuardians__UpdatedStakePrice(s_guardianAndDaoCut, newCut);
@@ -90,6 +94,7 @@ contract VaultGuardians is Ownable, VaultGuardiansBase {
      * @dev Since this is owned by the DAO, the funds will always go to the DAO. 
      * @param asset The ERC20 to sweep
      */
+    
     function sweepErc20s(IERC20 asset) external {
         uint256 amount = asset.balanceOf(address(this));
         emit VaultGuardians__SweptTokens(address(asset));

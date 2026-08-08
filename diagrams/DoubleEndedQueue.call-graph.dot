@@ -1,0 +1,36 @@
+strict digraph {
+rankdir="LR"
+node [shape=box]
+subgraph cluster_17640_DoubleEndedQueue {
+label = "DoubleEndedQueue"
+"17640_clear" [label="clear"]
+"17640_tryAt" [label="tryAt"]
+"17640_pushBack" [label="pushBack"]
+"17640_back" [label="back"]
+"17640_front" [label="front"]
+"17640_tryBack" [label="tryBack"]
+"17640_tryFront" [label="tryFront"]
+"17640_pushFront" [label="pushFront"]
+"17640_tryPushBack" [label="tryPushBack"]
+"17640_tryPushFront" [label="tryPushFront"]
+"17640_empty" [label="empty"]
+"17640_length" [label="length"]
+"17640_popFront" [label="popFront"]
+"17640_tryPopFront" [label="tryPopFront"]
+"17640_tryPopBack" [label="tryPopBack"]
+"17640_popBack" [label="popBack"]
+"17640_at" [label="at"]
+"17640_pushFront" -> "17640_tryPushFront"
+"17640_pushBack" -> "17640_tryPushBack"
+"17640_front" -> "17640_tryFront"
+"17640_at" -> "17640_tryAt"
+"17640_tryFront" -> "17640_empty"
+"17640_popFront" -> "17640_tryPopFront"
+"17640_back" -> "17640_tryBack"
+"17640_tryBack" -> "17640_empty"
+"17640_tryAt" -> "17640_length"
+"17640_popBack" -> "17640_tryPopBack"
+}subgraph cluster_solidity {
+label = "[Solidity]"
+}
+}
